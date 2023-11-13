@@ -15,6 +15,7 @@ wildcard_constraints:
 RDIR = config["results_dir"]
 # CIDIR = config["input_dir"] + "/" + config["country_input_dir"]
 INDIR = config["input_dir"]
+NODE = config["node_file"]
 
 def open_wildcards():
     try:
@@ -27,7 +28,7 @@ def open_wildcards():
 
 rule generate_wildcards:
     input:
-        nodes = f"{INDIR}/four_nodes.geojson",
+        nodes = f"{INDIR}/{NODE}.geojson",
     output:
         node_wildcards = f"{INDIR}/node_wildcards.json",
     log: "logs/generate_wildcards.log"
