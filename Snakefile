@@ -12,8 +12,8 @@ configfile: "config.yaml"
 wildcard_constraints:
     nodes="[-+a-zA-Z0-9\.\s]*"
 
-RDIR = config["results_dir"] + config["output_folder"]
-CIDIR = config["input_dir"] + "/" + config["country_input_dir"]
+RDIR = config["results_dir"]
+# CIDIR = config["input_dir"] + "/" + config["country_input_dir"]
 INDIR = config["input_dir"]
 
 def open_wildcards():
@@ -47,15 +47,15 @@ rule separate_nodes:
 
 rule test_all_wildcards:
     input:
-        expand(RDIR + "networks/lcoh_{nodes}.nc",
+        expand(RDIR + "networks/lcoh_{nodes}.csv",
         nodes=open_wildcards())
         
 
 rule test_wildcard:
     input:
-        nodes = CIDIR + "pickles/node_{nodes}.pkl",
+        nodes = INDIR + "/pickles/node_{nodes}.pkl",
     output:
-        network = RDIR + "networks/lcoh_{nodes}.nc",
+        network = RDIR + "networks/lcoh_{nodes}.csv",
     log: "logs/solve_network_lcoh_{nodes}.log"
     benchmark: "benchmarks/solve_network_lcoh_{nodes}"
     threads: 2
