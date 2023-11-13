@@ -3,7 +3,7 @@ config_file_name: config.yaml
 # settings for path (changable)
 results_dir: results/
 input_dir: geo_input
-country_input_dir: EU_no_land_constraints_all/
+country_input_dir: test_country/
 output_folder: test/
 
 # settings for logging (default settings)
