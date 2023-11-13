@@ -10,4 +10,4 @@ logging:
   level: INFO
   format: "%(levelname)s:%(name)s:%(message)s"
 
-node_file: four_nodes_comparison # four_nodes_comparison
+node_file: four_nodes # four_nodes_comparison
