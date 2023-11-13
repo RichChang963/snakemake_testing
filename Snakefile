@@ -36,21 +36,27 @@ rule generate_wildcards:
     script: "scripts/01_generate_nodes_wildcards.py"
 
 
+rule separate_nodes:
+    input:
+        geo_path = f"{INDIR}",
+    log: "logs/02_separate_nodes.log"
+    benchmark: "benchmarks/02_separate_nodes"
+    threads: 2
+    script: "scripts/02_separate_nodes.py"
+
+
 rule test_all_wildcards:
     input:
         expand(RDIR + "networks/lcoh_{nodes}.nc",
         nodes=open_wildcards())
-
+        
 
 rule test_wildcard:
     input:
-        overrides = INDIR + "/override_component_attrs",
         nodes = CIDIR + "pickles/node_{nodes}.pkl",
-        cost_assumption_path = INDIR + "/input_assumption/archetype_cost_assumption.csv",
-        cf_path = CIDIR,
     output:
         network = RDIR + "networks/lcoh_{nodes}.nc",
     log: "logs/solve_network_lcoh_{nodes}.log"
     benchmark: "benchmarks/solve_network_lcoh_{nodes}"
     threads: 2
-    script: "scripts/03_solve_networks.py"
+    script: "scripts/03_test_wildcard.py"
