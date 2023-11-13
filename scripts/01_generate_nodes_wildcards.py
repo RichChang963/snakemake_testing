@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-# SPDX-FileCopyrightText: : 2022-2023 The PyPSA-Eur and Agora Energiewende Authors
-
-# SPDX-License-Identifier: MIT
-
 # coding: utf-8
 
 import os
