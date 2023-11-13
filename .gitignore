@@ -1,0 +1,7 @@
+*.pyc
+*.log
+logs/
+benchmarks/
+geo_input/pickles/
+.snakemake/
+.vscode/
