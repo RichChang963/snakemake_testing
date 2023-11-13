@@ -23,3 +23,5 @@ if __name__ == "__main__":
 
     node_id = snakemake.wildcards.nodes
     print(node_id)
+    df = pd.read_pickle(snakemake.input.nodes)
+    df.to_csv(snakemake.output.network)
