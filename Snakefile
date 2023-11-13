@@ -10,7 +10,7 @@ HTTP = HTTPRemoteProvider()
 configfile: "config.yaml"
 
 wildcard_constraints:
-    nodes="[-+a-zA-Z0-9\.\s]*"
+    nodes="[-+a-zA-Z0-9\.\_\s]*"
 
 RDIR = config["results_dir"]
 # CIDIR = config["input_dir"] + "/" + config["country_input_dir"]
